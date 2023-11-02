@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decimal-Binary Converter</title>
+</head>
+<body>
+    <div>
+        <label for="conversionOption">Choose conversion option:</label>
+        <select id="conversionOption">
+            <option value="1">Decimal to Binary</option>
+            <option value="2">Binary to Decimal</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="inputValue">Enter number:</label>
+        <input type="text" id="inputValue">
+    </div>
+
+    <div>
+        <button onclick="convert()">Convert</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        function decimalToBinary(decimalNum) {
+            return (decimalNum >>> 0).toString(2);
+        }
+
+        function binaryToDecimal(binaryNum) {
+            return parseInt(binaryNum, 2);
+        }
+
+        function convert() {
+            var conversionOption = document.getElementById("conversionOption").value;
+            var inputValue = document.getElementById("inputValue").value;
+            var resultDiv = document.getElementById("result");
+
+            if (conversionOption === "1") {
+                var binaryResult = decimalToBinary(inputValue);
+                resultDiv.innerHTML = "Binary representation: " + binaryResult;
+            } else if (conversionOption === "2") {
+                var decimalResult = binaryToDecimal(inputValue);
+                resultDiv.innerHTML = "Decimal representation: " + decimalResult;
+            } else {
+                resultDiv.innerHTML = "Invalid choice. Please enter 1 or 2.";
+            }
+        }
+    </script>
+</body>
+</html>
