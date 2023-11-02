@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Converter</title>
+</head>
+<body>
+    <div>
+        <label for="inputValue">Enter number:</label>
+        <input type="text" id="inputValue">
+    </div>
+
+    <div>
+        <label for="base">Enter base:</label>
+        <input type="text" id="base">
+    </div>
+
+    <div>
+        <button onclick="convert()">Convert</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        function convertToCustomBase(decimalNum, base) {
+            return decimalNum.toString(base);
+        }
+
+        function convertFromCustomBase(customBaseNum, base) {
+            return parseInt(customBaseNum, base);
+        }
+
+        function convert() {
+            var inputValue = document.getElementById("inputValue").value;
+            var base = document.getElementById("base").value;
+            var resultDiv = document.getElementById("result");
+
+            if (inputValue && base) {
+                var decimalNum = parseInt(inputValue, 10);
+                var customBaseResult = convertToCustomBase(decimalNum, base);
+                resultDiv.innerHTML = `Custom base (${base}) representation: ${customBaseResult}`;
+            } else {
+                resultDiv.innerHTML = "Please enter both the number and the base.";
+            }
+        }
+    </script>
+</body>
+</html>
